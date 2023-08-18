@@ -33,6 +33,8 @@ export class CategoriasService {
   }
 
   remove(id: number) {
-    return `This action removes a #${id} categoria`;
+    return this.prismaService.categoria.delete({
+      where: { id },
+    });
   }
 }

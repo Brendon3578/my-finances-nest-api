@@ -11,7 +11,19 @@ datasource db {
 }
 
 model Categoria {
-  id        Int     @id @default(autoincrement())
-  nome      String  @db.VarChar(255)
-  descricao String? @db.Text
+  id        Int       @id @default(autoincrement())
+  nome      String    @db.VarChar(255)
+  descricao String?   @db.Text
+  Entrada   Entrada[]
+}
+
+model Entrada {
+  id           Int       @id @default(autoincrement())
+  nome         String    @db.VarChar(128)
+  pago         Boolean
+  valor        Decimal
+  tipo         String    @db.VarChar(64)
+  data         DateTime
+  categoria    Categoria @relation(fields: [categoria_id], references: [id])
+  categoria_id Int
 }

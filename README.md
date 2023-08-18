@@ -70,16 +70,27 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
-## Support
+## Anotações
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+### Diferença entre os métodos HTTP: Patch x Put
 
-## Stay in touch
+- `PUT`: Atualizar o recurso por **completo**, é obrigado a passar **TODOS** os dados
+- `PATCH`: Atualização **parcial**, passar todos os dados, ou apenas um único grupo de dados
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+### Nest Repl
 
-## License
+É possível rodar um ambiente REPL (Read-Eval-Print-Loop) para testar o back-end do nest pelo terminal, você pode chamar os métodos dos providers e controllers pelo terminal.
 
-Nest is [MIT licensed](LICENSE).
+Você cria um arquivo repl.ts e testa usando o comando `npm run start -- --entryFile repl`
+
+```ts
+// repl.ts
+import { repl } from '@nestjs/core';
+import { AppModule } from './app.module';
+
+async function bootstrap() {
+  await repl(AppModule);
+}
+
+bootstrap();
+```
